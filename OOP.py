@@ -1,7 +1,18 @@
-class Person: # использование классов (инскапсуляции, атрибутов, свойств)
-    def __init__(self, name):
-        self.__name = name
+class Person: # использование классов (инскапсуляции, атрибутов, свойств, наслование, переопределение функций базового класса, атрибутов класса)
+    default_name = 'Underfield'
+    __type = 'Person'
+    
+    def __init__(self, name): 
+        if name:
+            self.__name = name
+        else:
+            self.__name = Person.default_name
         self.__age = 18
+
+
+    @staticmethod
+    def print_type():
+        print(Person.__type)
 
     @property
     def age(self):
@@ -32,19 +43,40 @@ class Person: # использование классов (инскапсуля�
         print(f'Name: {self.__name} Age: {self.__age}')
 
 
+    def __str__(self):
+        return(f'Name: {self.__name}, age - {self.__age}')
+
+
 class Employee(Person):
+
+    def __init__(self, name, company):
+        super().__init__(name)
+        self.company = company
+
+
     def work(self):
         print(f'{self.name} works. He is {self.age} years old.')
 
-gasan = Person('Gasan')
+    
+    def diplay_info(self):
+        super().diplay_info()
+        print(f'Company: {self.company}')
+
+gasan = Person('')
 gasan.say_hello()
 gasan.age = 27
 gasan.age = 123
 gasan.diplay_info()
 print(gasan.name)
 
-gusen = Employee('Gusen')
+gusen = Employee('Gusen', 'Google')
 gusen.say_hello()
 gusen.age = 21
 gusen.age = 123
-gusen.work()
+gusen.diplay_info()
+
+print(isinstance(gasan, Employee)) # проверка принадлежности объекта к опеределнному классу
+print(isinstance(gusen, Employee))
+
+Person.print_type()
+print(gusen)
