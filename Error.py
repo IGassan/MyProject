@@ -13,7 +13,7 @@ except BaseException as e:
 print('The end') """
 
 
-class PersonAgeException(Exception):
+class PersonAgeException(Exception): # генерация исключений и создание своих типов иисключений
     def __init__(self, age, minage, maxage):
         self.age = age
         self.minage = minage
