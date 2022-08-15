@@ -49,3 +49,26 @@ with open(filename, 'rb') as file:
     use = pickle.load(file)
     for user in use:
         print(user)
+
+
+import datetime # использование модуля времени
+import locale 
+
+locale.setlocale(locale.LC_ALL, "")
+
+yesterday = datetime.date(2022, 8, 14)
+print(yesterday)
+
+today = datetime.date.today()
+print(today)
+
+current_time = datetime.time(10, 48)
+print(current_time)
+
+todayy = datetime.datetime.now()
+print(todayy.strftime('%d/%b/%Y'))
+
+print(todayy)
+three_hours = datetime.timedelta(hours=2, minutes= 15)
+three_hours = todayy - three_hours
+print(three_hours)
